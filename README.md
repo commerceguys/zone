@@ -22,5 +22,5 @@ not-postcode: ['27498', '78266']
 Spaish VAT Zone
 ```yaml
 country: ES
-not-postcode: (35|38)[0-9]{3}
+not-postcode: '(35|38)[0-9]{3}'
 ```
