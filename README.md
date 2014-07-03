@@ -8,8 +8,10 @@ use DrupalCommerce\Zone\ZoneManager;
 use DrupalCommerce\Zone\Zone;
 
 $zoneManager = new ZoneManager;
-$zoneManager->addZone($DEVATZone);
-$zoneManager->addZone($ESVATZone);
+$zoneManager->addZoneFromDefinition($DEVATZone);
+
+$zone = ZoneManager::createZoneFromDefinition($ESVATZone);
+$zoneManager->addZone($zone);
 
 $zone = $zoneManager->match($address);
 ```
