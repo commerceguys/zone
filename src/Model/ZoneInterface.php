@@ -35,6 +35,36 @@ interface ZoneInterface
     public function setName($name);
 
     /**
+     * Gets the zone scope.
+     *
+     * @return string The zone scope.
+     */
+    public function getScope();
+
+    /**
+     * Sets the zone scope.
+     *
+     * @param string $scope The zone scope.
+     */
+    public function setScope($scope);
+
+    /**
+     * Gets the zone priority.
+     *
+     * Zones with higher priority will be matched first.
+     *
+     * @return integer The zone priority.
+     */
+    public function getPriority();
+
+    /**
+     * Sets the zone priority.
+     *
+     * @param integer $priority The zone priority.
+     */
+    public function setPriority($priority);
+
+    /**
      * Gets the zone members.
      *
      * @return ZoneMemberInterface[] The zone members.

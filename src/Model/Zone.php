@@ -21,6 +21,20 @@ class Zone implements ZoneInterface
     protected $name;
 
     /**
+     * Zone scope.
+     *
+     * @var string
+     */
+    protected $scope;
+
+    /**
+     * Zone priority.
+     *
+     * @var integer
+     */
+    protected $priority;
+
+    /**
      * Zone members.
      *
      * @var array
@@ -69,6 +83,42 @@ class Zone implements ZoneInterface
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getScope()
+    {
+        return $this->scope;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setScope($scope)
+    {
+        $this->scope = $scope;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
 
         return $this;
     }
