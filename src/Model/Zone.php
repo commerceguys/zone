@@ -144,6 +144,51 @@ class Zone implements ZoneInterface
     /**
      * {@inheritdoc}
      */
+    public function hasMembers()
+    {
+        return !empty($this->members);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addMember(ZoneMemberInterface $member)
+    {
+        if (!$this->hasMember($member)) {
+            $member->setParentZone($this);
+            $this->members[] = $member;
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeMember(ZoneMemberInterface $member)
+    {
+        if ($this->hasMember($member)) {
+            $member->setParentZone(null);
+            // Remove the member and rekey the array.
+            $index = array_search($member, $this->members);
+            unset($this->members[$index]);
+            $this->members = array_values($this->members);
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasMember(ZoneMemberInterface $member)
+    {
+        return in_array($member, $this->members);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function match(AddressInterface $address)
     {
         foreach ($this->members as $member) {

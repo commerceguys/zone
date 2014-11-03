@@ -79,6 +79,34 @@ interface ZoneInterface
     public function setMembers($members);
 
     /**
+     * Checks whether the zone has zone members.
+     *
+     * @param ZoneMemberInterface $member
+     */
+    public function hasMembers();
+
+    /**
+     * Adds a zone member.
+     *
+     * @param ZoneMemberInterface $member
+     */
+    public function addMember(ZoneMemberInterface $member);
+
+    /**
+     * Removes a zone member.
+     *
+     * @param ZoneMemberInterface $member
+     */
+    public function removeMember(ZoneMemberInterface $member);
+
+    /**
+     * Checks whether the zone has a zone member.
+     *
+     * @param ZoneMemberInterface $member
+     */
+    public function hasMember(ZoneMemberInterface $member);
+
+    /**
      * Checks whether the provided address belongs to the zone.
      *
      * @param AddressInterface $address The address.

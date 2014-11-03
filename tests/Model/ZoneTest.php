@@ -64,15 +64,31 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getMembers
      * @covers ::setMembers
+     * @covers ::hasMembers
+     * @covers ::addMember
+     * @covers ::removeMember
+     * @covers ::hasMember
+     * @uses \CommerceGuys\Zone\Model\ZoneMember::setParentZone
      */
     public function testMembers()
     {
-        $zoneMember = $this
+        $firstZoneMember = $this
             ->getMockBuilder('CommerceGuys\Zone\Model\ZoneMember')
             ->getMock();
-        $members = array($zoneMember);
+        $secondZoneMember = $this
+            ->getMockBuilder('CommerceGuys\Zone\Model\ZoneMember')
+            ->getMock();
 
+        $this->assertEquals(false, $this->zone->hasMembers());
+        $members = array($firstZoneMember, $secondZoneMember);
         $this->zone->setMembers($members);
+        $this->assertEquals($members, $this->zone->getMembers());
+        $this->assertEquals(true, $this->zone->hasMembers());
+        $this->zone->removeMember($secondZoneMember);
+        $this->assertEquals(array($firstZoneMember), $this->zone->getMembers());
+        $this->assertEquals(false, $this->zone->hasMember($secondZoneMember));
+        $this->assertEquals(true, $this->zone->hasMember($firstZoneMember));
+        $this->zone->addMember($secondZoneMember);
         $this->assertEquals($members, $this->zone->getMembers());
     }
 
