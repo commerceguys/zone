@@ -76,9 +76,9 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Sets the administrative area.
      *
-     * @param SubdivisionInterface $administrativeArea The administrative area.
+     * @param SubdivisionInterface|null $administrativeArea The administrative area.
      */
-    public function setAdministrativeArea(SubdivisionInterface $administrativeArea)
+    public function setAdministrativeArea(SubdivisionInterface $administrativeArea = null)
     {
         $this->administrativeArea = $administrativeArea;
 
@@ -98,9 +98,9 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Sets the locality.
      *
-     * @param SubdivisionInterface $locality The locality.
+     * @param SubdivisionInterface|null $locality The locality.
      */
-    public function setLocality(SubdivisionInterface $locality)
+    public function setLocality(SubdivisionInterface $locality = null)
     {
         $this->locality = $locality;
 
@@ -121,9 +121,9 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Sets the dependent locality.
      *
-     * @param SubdivisionInterface $dependentLocality The dependent locality.
+     * @param SubdivisionInterface|null $dependentLocality The dependent locality.
      */
-    public function setDependentLocality(SubdivisionInterface $dependentLocality)
+    public function setDependentLocality(SubdivisionInterface $dependentLocality = null)
     {
         $this->dependentLocality = $dependentLocality;
 

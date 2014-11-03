@@ -37,16 +37,16 @@ interface ZoneMemberInterface
     /**
      * Gets the parent zone.
      *
-     * @return ZoneInterface The parent zone.
+     * @return ZoneInterface|null The parent zone, if set.
      */
     public function getParentZone();
 
     /**
      * Sets the parent zone.
      *
-     * @param ZoneInterface $parentZone The parent zone.
+     * @param ZoneInterface|null $parentZone The parent zone.
      */
-    public function setParentZone(ZoneInterface $parentZone);
+    public function setParentZone(ZoneInterface $parentZone = null);
 
     /**
      * Checks whether the provided address belongs to the zone member.
