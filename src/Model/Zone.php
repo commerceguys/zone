@@ -39,7 +39,7 @@ class Zone implements ZoneInterface
      *
      * @var array
      */
-    protected $members;
+    protected $members = array();
 
     /**
      * Returns the string representation of the zone.
