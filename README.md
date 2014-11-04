@@ -49,4 +49,3 @@ $zone->setScope('shipping');
 $zone->setMembers(array($californiaZoneMember, $washingtonZoneMember));
 ```
 
-
