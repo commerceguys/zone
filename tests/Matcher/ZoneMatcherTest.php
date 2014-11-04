@@ -110,10 +110,15 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
             ->getMock();
         $zones = $this->matcher->matchAll($address);
         $this->assertCount(3, $zones);
-        // de3 must come first because it has a higher priority.
+        // de3 must come first because it has the highest priority.
         $this->assertEquals('de3', $zones[0]->getId());
-        $this->assertEquals('de2', $zones[1]->getId());
-        $this->assertEquals('de', $zones[2]->getId());
+        // The other two zones have the same priority, so their order is
+        // undefined and different between PHP and HHVM.
+        $otherIds = array();
+        $otherIds[] = $zones[1]->getId();
+        $otherIds[] = $zones[2]->getId();
+        $this->assertContains('de2', $otherIds);
+        $this->assertContains('de', $otherIds);
     }
 
     /**
