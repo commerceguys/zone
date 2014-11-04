@@ -48,15 +48,15 @@ abstract class ZoneMember implements ZoneMemberInterface
      */
     public function getName()
     {
-        return $this->id;
+        return $this->name;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setName($id)
+    public function setName($name)
     {
-        $this->id = $id;
+        $this->name = $name;
 
         return $this;
     }
