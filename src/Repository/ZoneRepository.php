@@ -100,7 +100,7 @@ class ZoneRepository implements ZoneRepositoryInterface
     }
 
     /**
-     * Loads the zone definition for the provided country code.
+     * Loads the zone definition for the provided id.
      *
      * @param string $id The zone id.
      *

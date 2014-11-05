@@ -21,8 +21,7 @@ interface ZoneRepositoryInterface
      *
      * @param string $scope An optional scope to filter zones by.
      *
-     * @return array An array of zones implementing the ZoneInterface,
-     *               keyed by zone id.
+     * @return ZoneInterface[] An array of zone instances.
      */
     public function getAll($scope = null);
 }
