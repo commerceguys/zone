@@ -81,28 +81,30 @@ interface ZoneInterface
     /**
      * Checks whether the zone has zone members.
      *
-     * @param ZoneMemberInterface $member
+     * @return boolean True if the zone has zone members, false otherwise.
      */
     public function hasMembers();
 
     /**
      * Adds a zone member.
      *
-     * @param ZoneMemberInterface $member
+     * @param ZoneMemberInterface $member The zone member.
      */
     public function addMember(ZoneMemberInterface $member);
 
     /**
      * Removes a zone member.
      *
-     * @param ZoneMemberInterface $member
+     * @param ZoneMemberInterface $member The zone member.
      */
     public function removeMember(ZoneMemberInterface $member);
 
     /**
      * Checks whether the zone has a zone member.
      *
-     * @param ZoneMemberInterface $member
+     * @param ZoneMemberInterface $member The zone member.
+     *
+     * @return boolean True if the zone member was found, false otherwise.
      */
     public function hasMember(ZoneMemberInterface $member);
 
