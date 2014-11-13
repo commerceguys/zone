@@ -30,7 +30,7 @@ class Zone implements ZoneInterface
     /**
      * Zone priority.
      *
-     * @var integer
+     * @var int
      */
     protected $priority;
 

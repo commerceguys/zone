@@ -76,8 +76,8 @@ trait PostalCodeMatcherTrait
      *
      * @param string $postalCode The postal code.
      *
-     * @return boolean True if the provided postal code matches the configured
-     *                 rules, false otherwise.
+     * @return bool True if the provided postal code matches the configured
+     *              rules, false otherwise.
      */
     protected function matchPostalCode($postalCode)
     {

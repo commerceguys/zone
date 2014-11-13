@@ -53,8 +53,8 @@ interface ZoneMemberInterface
      *
      * @param AddressInterface $address The address.
      *
-     * @return boolean True if the provided address belongs to the zone member,
-     *                 false otherwise.
+     * @return bool True if the provided address belongs to the zone member,
+     *              false otherwise.
      */
     public function match(AddressInterface $address);
 }

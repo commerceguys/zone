@@ -53,14 +53,14 @@ interface ZoneInterface
      *
      * Zones with higher priority will be matched first.
      *
-     * @return integer The zone priority.
+     * @return int The zone priority.
      */
     public function getPriority();
 
     /**
      * Sets the zone priority.
      *
-     * @param integer $priority The zone priority.
+     * @param int $priority The zone priority.
      */
     public function setPriority($priority);
 
@@ -81,7 +81,7 @@ interface ZoneInterface
     /**
      * Checks whether the zone has zone members.
      *
-     * @return boolean True if the zone has zone members, false otherwise.
+     * @return bool True if the zone has zone members, false otherwise.
      */
     public function hasMembers();
 
@@ -104,7 +104,7 @@ interface ZoneInterface
      *
      * @param ZoneMemberInterface $member The zone member.
      *
-     * @return boolean True if the zone member was found, false otherwise.
+     * @return bool True if the zone member was found, false otherwise.
      */
     public function hasMember(ZoneMemberInterface $member);
 
@@ -113,8 +113,8 @@ interface ZoneInterface
      *
      * @param AddressInterface $address The address.
      *
-     * @return boolean True if the provided address belongs to the zone,
-     *                 false otherwise.
+     * @return bool True if the provided address belongs to the zone,
+     *              false otherwise.
      */
     public function match(AddressInterface $address);
 }
