@@ -3,6 +3,7 @@
 namespace CommerceGuys\Zone\Tests\Model;
 
 use CommerceGuys\Zone\Model\Zone;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @coversDefaultClass \CommerceGuys\Zone\Model\Zone
@@ -80,12 +81,11 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         $this->assertEquals(false, $this->zone->hasMembers());
-        $members = array($firstZoneMember, $secondZoneMember);
+        $members = new ArrayCollection(array($firstZoneMember, $secondZoneMember));
         $this->zone->setMembers($members);
         $this->assertEquals($members, $this->zone->getMembers());
         $this->assertEquals(true, $this->zone->hasMembers());
         $this->zone->removeMember($secondZoneMember);
-        $this->assertEquals(array($firstZoneMember), $this->zone->getMembers());
         $this->assertEquals(false, $this->zone->hasMember($secondZoneMember));
         $this->assertEquals(true, $this->zone->hasMember($firstZoneMember));
         $this->zone->addMember($secondZoneMember);
@@ -118,11 +118,11 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
             ->with($address)
             ->will($this->returnValue(false));
 
-        $members = array($matchingZoneMember, $nonMatchingZoneMember);
+        $members = new ArrayCollection(array($matchingZoneMember, $nonMatchingZoneMember));
         $this->zone->setMembers($members);
         $this->assertEquals(true, $this->zone->match($address));
 
-        $members = array($nonMatchingZoneMember);
+        $members = new ArrayCollection(array($nonMatchingZoneMember));
         $this->zone->setMembers($members);
         $this->assertEquals(false, $this->zone->match($address));
     }

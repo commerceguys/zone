@@ -3,6 +3,9 @@
 namespace CommerceGuys\Zone\Model;
 
 use CommerceGuys\Addressing\Model\AddressInterface;
+use CommerceGuys\Zone\Exception\UnexpectedTypeException;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Zone implements ZoneInterface
 {
@@ -35,11 +38,12 @@ class Zone implements ZoneInterface
     protected $priority;
 
     /**
-     * Zone members.
-     *
-     * @var array
-     */
-    protected $members = array();
+    * Creates a Zone instance.
+    */
+    public function __construct()
+    {
+      $this->members = new ArrayCollection();
+    }
 
     /**
      * Returns the string representation of the zone.
@@ -136,6 +140,11 @@ class Zone implements ZoneInterface
      */
     public function setMembers($members)
     {
+        // The interface doesn't typehint $children to allow other
+        // implementations to avoid using Doctrine Collections if desired.
+        if (!($members instanceof Collection)) {
+            throw new UnexpectedTypeException($members, 'Collection');
+        }
         $this->members = $members;
 
         return $this;
@@ -146,7 +155,7 @@ class Zone implements ZoneInterface
      */
     public function hasMembers()
     {
-        return !empty($this->members);
+        return !$this->members->isEmpty();
     }
 
     /**
@@ -156,7 +165,7 @@ class Zone implements ZoneInterface
     {
         if (!$this->hasMember($member)) {
             $member->setParentZone($this);
-            $this->members[] = $member;
+            $this->members->add($member);
         }
 
         return $this;
@@ -169,10 +178,7 @@ class Zone implements ZoneInterface
     {
         if ($this->hasMember($member)) {
             $member->setParentZone(null);
-            // Remove the member and rekey the array.
-            $index = array_search($member, $this->members);
-            unset($this->members[$index]);
-            $this->members = array_values($this->members);
+            $this->members->removeElement($member);
         }
 
         return $this;
@@ -183,7 +189,7 @@ class Zone implements ZoneInterface
      */
     public function hasMember(ZoneMemberInterface $member)
     {
-        return in_array($member, $this->members);
+        return $this->members->contains($member);
     }
 
     /**
