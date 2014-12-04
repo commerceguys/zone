@@ -37,6 +37,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     {
         $administrativeArea = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
+            ->disableOriginalConstructor()
             ->getMock();
 
         $this->zoneMember->setAdministrativeArea($administrativeArea);
@@ -51,6 +52,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     {
         $locality = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
+            ->disableOriginalConstructor()
             ->getMock();
 
         $this->zoneMember->setLocality($locality);
@@ -65,6 +67,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     {
         $dependentLocality = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
+            ->disableOriginalConstructor()
             ->getMock();
 
         $this->zoneMember->setDependentLocality($dependentLocality);
@@ -82,23 +85,21 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
      */
     public function testMatch($address, $expectedResult)
     {
-        $administrativeArea = $this
+        $mockBuilder = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
-            ->getMock();
+            ->disableOriginalConstructor();
+
+        $administrativeArea = $mockBuilder->getMock();
         $administrativeArea
             ->expects($this->any())
             ->method('getId')
             ->will($this->returnValue('CN-13'));
-        $locality = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
-            ->getMock();
+        $locality = $mockBuilder->getMock();
         $locality
             ->expects($this->any())
             ->method('getId')
             ->will($this->returnValue('CN-13-e8dfb8'));
-        $dependentLocality = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
-            ->getMock();
+        $dependentLocality = $mockBuilder->getMock();
         $dependentLocality
             ->expects($this->any())
             ->method('getId')
@@ -156,6 +157,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     {
         $address = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->disableOriginalConstructor()
             ->getMock();
         if ($countryCode) {
             $address

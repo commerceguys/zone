@@ -45,6 +45,7 @@ class ZoneMemberTest extends \PHPUnit_Framework_TestCase
     {
         $zone = $this
             ->getMockBuilder('CommerceGuys\Zone\Model\Zone')
+            ->disableOriginalConstructor()
             ->getMock();
 
         $this->zoneMember->setParentZone($zone);

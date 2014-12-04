@@ -23,6 +23,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getId
      * @covers ::setId
+     * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testId()
     {
@@ -34,6 +35,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
      * @covers ::getName
      * @covers ::setName
      * @covers ::__toString
+     * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testName()
     {
@@ -45,6 +47,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getScope
      * @covers ::setScope
+     * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testScope()
     {
@@ -55,6 +58,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getPriority
      * @covers ::setPriority
+     * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testPriority()
     {
@@ -62,13 +66,25 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10, $this->zone->getPriority());
     }
 
+     /**
+     * @covers ::setMembers
+     * @uses \CommerceGuys\Zone\Model\Zone::__construct
+     * @expectedException \CommerceGuys\Zone\Exception\UnexpectedTypeException
+     */
+    public function testSetInvalidMembers()
+    {
+        $this->zone->setMembers(array(1, 2));
+    }
+
     /**
+     * @covers ::__construct
      * @covers ::getMembers
      * @covers ::setMembers
      * @covers ::hasMembers
      * @covers ::addMember
      * @covers ::removeMember
      * @covers ::hasMember
+     * @uses \CommerceGuys\Zone\Model\Zone::__construct
      * @uses \CommerceGuys\Zone\Model\ZoneMember::setParentZone
      */
     public function testMembers()
@@ -79,8 +95,11 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
         $secondZoneMember = $this
             ->getMockBuilder('CommerceGuys\Zone\Model\ZoneMember')
             ->getMock();
+        $empty = new ArrayCollection();
+        $members = new ArrayCollection(array($firstZoneMember, $secondZoneMember));
 
         $this->assertEquals(false, $this->zone->hasMembers());
+        $this->assertEquals($empty, $this->zone->getMembers());
         $members = new ArrayCollection(array($firstZoneMember, $secondZoneMember));
         $this->zone->setMembers($members);
         $this->assertEquals($members, $this->zone->getMembers());
@@ -94,6 +113,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::match
+     * @uses \CommerceGuys\Zone\Model\Zone::__construct
      * @uses \CommerceGuys\Zone\Model\Zone::setMembers
      */
     public function testMatch()

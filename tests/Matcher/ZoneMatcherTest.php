@@ -93,6 +93,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
     {
         $address = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->disableOriginalConstructor()
             ->getMock();
         $zone = $this->matcher->match($address);
         $this->assertInstanceOf('CommerceGuys\Zone\Model\Zone', $zone);
@@ -107,6 +108,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
     {
         $address = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->disableOriginalConstructor()
             ->getMock();
         $zones = $this->matcher->matchAll($address);
         $this->assertCount(3, $zones);
@@ -134,6 +136,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
     {
         $zone = $this
             ->getMockBuilder('CommerceGuys\Zone\Model\Zone')
+            ->disableOriginalConstructor()
             ->getMock();
         $zone
             ->expects($this->any())

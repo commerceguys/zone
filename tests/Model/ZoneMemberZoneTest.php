@@ -27,6 +27,7 @@ class ZoneMemberZoneTest extends \PHPUnit_Framework_TestCase
     {
         $zone = $this
             ->getMockBuilder('CommerceGuys\Zone\Model\Zone')
+            ->disableOriginalConstructor()
             ->getMock();
 
         $this->zoneMember->setZone($zone);
@@ -41,9 +42,11 @@ class ZoneMemberZoneTest extends \PHPUnit_Framework_TestCase
     {
         $address = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->disableOriginalConstructor()
             ->getMock();
         $matchingZone = $this
             ->getMockBuilder('CommerceGuys\Zone\Model\Zone')
+            ->disableOriginalConstructor()
             ->getMock();
         $matchingZone
             ->expects($this->any())
@@ -52,6 +55,7 @@ class ZoneMemberZoneTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue(true));
         $nonMatchingZone = $this
             ->getMockBuilder('CommerceGuys\Zone\Model\Zone')
+            ->disableOriginalConstructor()
             ->getMock();
         $nonMatchingZone
             ->expects($this->any())
