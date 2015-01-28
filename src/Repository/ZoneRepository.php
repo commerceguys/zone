@@ -198,7 +198,6 @@ class ZoneRepository implements ZoneRepositoryInterface
         $zone = $this->get($definition['zone']);
         $zoneMember = new ZoneMemberZone();
         $zoneMember->setId($definition['id']);
-        $zoneMember->setName($definition['name']);
         $zoneMember->setZone($zone);
 
         return $zoneMember;

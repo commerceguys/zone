@@ -17,6 +17,14 @@ class ZoneMemberZone extends ZoneMember
     protected $zone;
 
     /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->zone->getName();
+    }
+
+    /**
      * Gets the zone.
      *
      * @return ZoneInterface The zone matched by the zone member.

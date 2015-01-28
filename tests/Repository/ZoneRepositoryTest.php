@@ -41,7 +41,6 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
                 array(
                     'type' => 'zone',
                     'id' => '2',
-                    'name' => 'Germany',
                     'zone' => 'de',
                 ),
                 array(
@@ -109,7 +108,6 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
         $germanyMember = $members[0];
         $this->assertInstanceOf('CommerceGuys\Zone\Model\ZoneMemberZone', $germanyMember);
         $this->assertEquals('2', $germanyMember->getId());
-        $this->assertEquals('Germany', $germanyMember->getName());
         $this->assertEquals($zone, $germanyMember->getParentZone());
         $this->assertEquals($zoneRepository->get('de'), $germanyMember->getZone());
 

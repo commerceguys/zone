@@ -20,6 +20,25 @@ class ZoneMemberZoneTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::getName
+     * @uses \CommerceGuys\Zone\Model\ZoneMemberZone::setZone
+     */
+    public function testName()
+    {
+        $zone = $this
+            ->getMockBuilder('CommerceGuys\Zone\Model\Zone')
+            ->disableOriginalConstructor()
+            ->getMock();
+        $zone
+            ->expects($this->any())
+            ->method('getName')
+            ->will($this->returnValue('Test'));
+
+        $this->zoneMember->setZone($zone);
+        $this->assertEquals('Test', $this->zoneMember->getName());
+    }
+
+    /**
      * @covers ::getZone
      * @covers ::setZone
      */
