@@ -129,14 +129,20 @@ class ZoneRepository implements ZoneRepositoryInterface
     protected function createZoneFromDefinition(array $definition)
     {
         $zone = new Zone();
-        $zone->setId($definition['id']);
-        $zone->setName($definition['name']);
-        if (isset($definition['scope'])) {
-            $zone->setScope($definition['scope']);
-        }
-        if (isset($definition['priority'])) {
-            $zone->setPriority($definition['priority']);
-        }
+        // Bind the closure to the Zone object, giving it access to
+        // its protected properties. Faster than both setters and reflection.
+        $setValues = \Closure::bind(function ($definition) {
+            $this->id = $definition['id'];
+            $this->name = $definition['name'];
+            if (isset($definition['scope'])) {
+                $this->scope = $definition['scope'];
+            }
+            if (isset($definition['priority'])) {
+                $this->priority = $definition['priority'];
+            }
+        }, $zone, '\CommerceGuys\Zone\Model\Zone');
+        $setValues($definition);
+
         // Add the zone members.
         foreach ($definition['members'] as $memberDefinition) {
             if ($memberDefinition['type'] == 'country') {
@@ -160,28 +166,39 @@ class ZoneRepository implements ZoneRepositoryInterface
      */
     protected function createZoneMemberCountryFromDefinition(array $definition)
     {
-        $zoneMember = new ZoneMemberCountry();
-        $zoneMember->setId($definition['id']);
-        $zoneMember->setName($definition['name']);
-        $zoneMember->setCountryCode($definition['country_code']);
+        // Load any referenced subdivisions.
         if (isset($definition['administrative_area'])) {
-            $administrativeArea = $this->addressDataProvider->getSubdivision($definition['administrative_area']);
-            $zoneMember->setAdministrativeArea($administrativeArea);
+            $definition['administrative_area'] = $this->addressDataProvider->getSubdivision($definition['administrative_area']);
         }
         if (isset($definition['locality'])) {
-            $locality = $this->addressDataProvider->getSubdivision($definition['locality']);
-            $zoneMember->setLocality($locality);
+            $definition['locality'] = $this->addressDataProvider->getSubdivision($definition['locality']);
         }
         if (isset($definition['dependent_locality'])) {
-            $dependentLocality = $this->addressDataProvider->getSubdivision($definition['dependent_locality']);
-            $zoneMember->setDependentLocality($dependentLocality);
+            $definition['dependent_locality'] = $this->addressDataProvider->getSubdivision($definition['dependent_locality']);
         }
-        if (isset($definition['included_postal_codes'])) {
-            $zoneMember->setIncludedPostalCodes($definition['included_postal_codes']);
-        }
-        if (isset($definition['excluded_postal_codes'])) {
-            $zoneMember->setExcludedPostalCodes($definition['excluded_postal_codes']);
-        }
+
+        $zoneMember = new ZoneMemberCountry();
+        $setValues = \Closure::bind(function ($definition) {
+            $this->id = $definition['id'];
+            $this->name = $definition['name'];
+            $this->countryCode = $definition['country_code'];
+            if (isset($definition['administrative_area'])) {
+                $this->administrativeArea = $definition['administrative_area'];
+            }
+            if (isset($definition['locality'])) {
+                $this->locality = $definition['locality'];
+            }
+            if (isset($definition['dependent_locality'])) {
+                $this->dependentLocality = $definition['dependent_locality'];
+            }
+            if (isset($definition['included_postal_codes'])) {
+                $this->includedPostalCodes = $definition['included_postal_codes'];
+            }
+            if (isset($definition['excluded_postal_codes'])) {
+                $this->excludedPostalCodes = $definition['excluded_postal_codes'];
+            }
+        }, $zoneMember, '\CommerceGuys\Zone\Model\ZoneMemberCountry');
+        $setValues($definition);
 
         return $zoneMember;
     }
@@ -197,8 +214,11 @@ class ZoneRepository implements ZoneRepositoryInterface
     {
         $zone = $this->get($definition['zone']);
         $zoneMember = new ZoneMemberZone();
-        $zoneMember->setId($definition['id']);
         $zoneMember->setZone($zone);
+        $setValues = \Closure::bind(function ($definition) {
+            $this->id = $definition['id'];
+        }, $zoneMember, '\CommerceGuys\Zone\Model\ZoneMemberZone');
+        $setValues($definition);
 
         return $zoneMember;
     }
