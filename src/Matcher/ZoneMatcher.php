@@ -40,13 +40,13 @@ class ZoneMatcher implements ZoneMatcherInterface
     public function matchAll(AddressInterface $address, $scope = null)
     {
         // Find all matching zones.
-        $results = array();
+        $results = [];
         foreach ($this->repository->getAll($scope) as $zone) {
             if ($zone->match($address)) {
-                $results[] = array(
+                $results[] = [
                     'priority' => (int) $zone->getPriority(),
                     'zone' => $zone,
-                );
+                ];
             }
         }
         // Sort the matched zones by priority.
@@ -58,7 +58,7 @@ class ZoneMatcher implements ZoneMatcherInterface
             return ($a['priority'] > $b['priority']) ? -1 : 1;
         });
         // Create the final zone array from the results.
-        $zones = array();
+        $zones = [];
         foreach ($results as $result) {
             $zones[] = $result['zone'];
         }

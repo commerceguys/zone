@@ -17,28 +17,28 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
      *
      * @var array
      */
-    protected $zones = array(
-        'fr' => array(
+    protected $zones = [
+        'fr' => [
             'id' => 'fr',
             'priority' => 0,
             'match' => false,
-        ),
-        'de' => array(
+        ],
+        'de' => [
             'id' => 'de',
             'priority' => 0,
             'match' => true,
-        ),
-        'de2' => array(
+        ],
+        'de2' => [
             'id' => 'de2',
             'priority' => 0,
             'match' => true,
-        ),
-        'de3' => array(
+        ],
+        'de3' => [
             'id' => 'de3',
             'priority' => 2,
             'match' => true,
-        ),
-    );
+        ],
+    ];
 
     /**
      * The zone matcher.
@@ -52,7 +52,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $zones = array();
+        $zones = [];
         foreach ($this->zones as $definition) {
             $zones[] = $this->getZone($definition['id'], $definition['priority'], $definition['match']);
         }
@@ -116,7 +116,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('de3', $zones[0]->getId());
         // The other two zones have the same priority, so their order is
         // undefined and different between PHP and HHVM.
-        $otherIds = array();
+        $otherIds = [];
         $otherIds[] = $zones[1]->getId();
         $otherIds[] = $zones[2]->getId();
         $this->assertContains('de2', $otherIds);

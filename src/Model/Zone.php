@@ -38,6 +38,13 @@ class Zone implements ZoneInterface
     protected $priority;
 
     /**
+     * Zone members.
+     *
+     * @var ZoneMemberInterface[]
+     */
+    protected $members;
+
+    /**
     * Creates a Zone instance.
     */
     public function __construct()

@@ -126,14 +126,14 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
         $dependentLocalityAddress = $this->getAddress('CN', 'CN-13', 'CN-13-e8dfb8', 'CN-13-e8dfb8-269b0a');
         $fullAddress = $this->getAddress('CN', 'CN-13', 'CN-13-e8dfb8', 'CN-13-e8dfb8-269b0a', '123456');
 
-        return array(
-            array($emptyAddress, false),
-            array($countryAddress, false),
-            array($administrativeAreaAddress, false),
-            array($localityAddress, false),
-            array($dependentLocalityAddress, false),
-            array($fullAddress, true),
-        );
+        return [
+            [$emptyAddress, false],
+            [$countryAddress, false],
+            [$administrativeAreaAddress, false],
+            [$localityAddress, false],
+            [$dependentLocalityAddress, false],
+            [$fullAddress, true],
+        ];
     }
 
     /**

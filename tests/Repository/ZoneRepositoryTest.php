@@ -17,33 +17,33 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
      *
      * @var array
      */
-    protected $zones = array(
-        'de' => array(
+    protected $zones = [
+        'de' => [
             'name' => 'Germany',
             'scope' => 'shipping',
-            'members' => array(
-                array(
+            'members' => [
+                [
                     'type' => 'country',
                     'id' => '1',
                     'name' => 'Germany',
                     'country_code' => 'DE',
-                ),
-            ),
-        ),
-        'de_vat' => array(
+                ],
+            ],
+        ],
+        'de_vat' => [
             'name' => 'Germany',
             'scope' => 'tax',
             'priority' => 1,
             // A real zone wouldn't reference a zone of a different
             // scope (like here with de_vat -> de), but it decreases the
             // amount of data in this test.
-            'members' => array(
-                array(
+            'members' => [
+                [
                     'type' => 'zone',
                     'id' => '2',
                     'zone' => 'de',
-                ),
-                array(
+                ],
+                [
                     'type' => 'country',
                     'id' => '3',
                     'name' => 'Austria',
@@ -54,10 +54,10 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
                     'locality' => 'CH-AG',
                     'dependent_locality' => 'CH-AG',
                     'excluded_postal_codes' => '123456',
-                ),
-            ),
-        ),
-    );
+                ],
+            ],
+        ],
+    ];
 
     /**
      * @covers ::__construct

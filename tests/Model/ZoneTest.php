@@ -73,7 +73,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetInvalidMembers()
     {
-        $this->zone->setMembers(array(1, 2));
+        $this->zone->setMembers([1, 2]);
     }
 
     /**
@@ -96,11 +96,11 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
             ->getMockBuilder('CommerceGuys\Zone\Model\ZoneMember')
             ->getMock();
         $empty = new ArrayCollection();
-        $members = new ArrayCollection(array($firstZoneMember, $secondZoneMember));
+        $members = new ArrayCollection([$firstZoneMember, $secondZoneMember]);
 
         $this->assertEquals(false, $this->zone->hasMembers());
         $this->assertEquals($empty, $this->zone->getMembers());
-        $members = new ArrayCollection(array($firstZoneMember, $secondZoneMember));
+        $members = new ArrayCollection([$firstZoneMember, $secondZoneMember]);
         $this->zone->setMembers($members);
         $this->assertEquals($members, $this->zone->getMembers());
         $this->assertEquals(true, $this->zone->hasMembers());
@@ -138,11 +138,11 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
             ->with($address)
             ->will($this->returnValue(false));
 
-        $members = new ArrayCollection(array($matchingZoneMember, $nonMatchingZoneMember));
+        $members = new ArrayCollection([$matchingZoneMember, $nonMatchingZoneMember]);
         $this->zone->setMembers($members);
         $this->assertEquals(true, $this->zone->match($address));
 
-        $members = new ArrayCollection(array($nonMatchingZoneMember));
+        $members = new ArrayCollection([$nonMatchingZoneMember]);
         $this->zone->setMembers($members);
         $this->assertEquals(false, $this->zone->match($address));
     }

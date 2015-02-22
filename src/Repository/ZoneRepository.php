@@ -35,14 +35,14 @@ class ZoneRepository implements ZoneRepositoryInterface
      *
      * @var array
      */
-    protected $zoneIndex = array();
+    protected $zoneIndex = [];
 
     /**
      * Zones.
      *
      * @var array
      */
-    protected $zones = array();
+    protected $zones = [];
 
     /**
      * Creates a ZoneRepository instance.
@@ -88,7 +88,7 @@ class ZoneRepository implements ZoneRepositoryInterface
         }
 
         // Load each zone, filter by scope if needed.
-        $zones = array();
+        $zones = [];
         foreach ($this->zoneIndex as $id) {
             $zone = $this->get($id);
             if (is_null($scope) || ($zone->getScope() == $scope)) {
