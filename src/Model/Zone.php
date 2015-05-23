@@ -45,11 +45,11 @@ class Zone implements ZoneInterface
     protected $members;
 
     /**
-    * Creates a Zone instance.
-    */
+     * Creates a Zone instance.
+     */
     public function __construct()
     {
-      $this->members = new ArrayCollection();
+        $this->members = new ArrayCollection();
     }
 
     /**
