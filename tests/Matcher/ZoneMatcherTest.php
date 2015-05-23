@@ -86,6 +86,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::match
+     *
      * @uses \CommerceGuys\Zone\Matcher\ZoneMatcher::__construct
      * @uses \CommerceGuys\Zone\Matcher\ZoneMatcher::matchAll
      */
@@ -102,6 +103,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::matchAll
+     *
      * @uses \CommerceGuys\Zone\Matcher\ZoneMatcher::__construct
      */
     public function testMatchAll()
@@ -126,9 +128,9 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * Returns a mock zone based on the provided data.
      *
-     * @param string  $id       The zone id.
-     * @param integer $priority The zone priority.
-     * @param boolean $match    Whether the zone should match.
+     * @param string $id       The zone id.
+     * @param int    $priority The zone priority.
+     * @param bool   $match    Whether the zone should match.
      *
      * @return \CommerceGuys\Zone\Model\Zone
      */

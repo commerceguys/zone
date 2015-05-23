@@ -23,6 +23,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getId
      * @covers ::setId
+     *
      * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testId()
@@ -35,6 +36,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
      * @covers ::getName
      * @covers ::setName
      * @covers ::__toString
+     *
      * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testName()
@@ -47,6 +49,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getScope
      * @covers ::setScope
+     *
      * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testScope()
@@ -58,6 +61,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::getPriority
      * @covers ::setPriority
+     *
      * @uses \CommerceGuys\Zone\Model\Zone::__construct
      */
     public function testPriority()
@@ -66,8 +70,9 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(10, $this->zone->getPriority());
     }
 
-     /**
+    /**
      * @covers ::setMembers
+     *
      * @uses \CommerceGuys\Zone\Model\Zone::__construct
      * @expectedException \CommerceGuys\Zone\Exception\UnexpectedTypeException
      */
@@ -84,6 +89,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
      * @covers ::addMember
      * @covers ::removeMember
      * @covers ::hasMember
+     *
      * @uses \CommerceGuys\Zone\Model\Zone::__construct
      * @uses \CommerceGuys\Zone\Model\ZoneMember::setParentZone
      */
@@ -113,6 +119,7 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::match
+     *
      * @uses \CommerceGuys\Zone\Model\Zone::__construct
      * @uses \CommerceGuys\Zone\Model\Zone::setMembers
      */

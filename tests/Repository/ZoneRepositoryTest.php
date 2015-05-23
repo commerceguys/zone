@@ -87,6 +87,7 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
      * @covers ::createZoneFromDefinition
      * @covers ::createZoneMemberCountryFromDefinition
      * @covers ::createZoneMemberZoneFromDefinition
+     *
      * @uses \CommerceGuys\Zone\Model\Zone
      * @uses \CommerceGuys\Zone\Model\ZoneMember
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry
@@ -149,6 +150,7 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
      * @covers ::createZoneFromDefinition
      * @covers ::createZoneMemberCountryFromDefinition
      * @covers ::createZoneMemberZoneFromDefinition
+     *
      * @uses \CommerceGuys\Zone\Repository\ZoneRepository::get
      * @uses \CommerceGuys\Zone\Model\Zone
      * @uses \CommerceGuys\Zone\Model\ZoneMember

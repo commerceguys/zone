@@ -76,6 +76,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::match
+     *
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setCountryCode
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setAdministrativeArea
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setLocality
@@ -153,8 +154,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
         $locality = null,
         $dependentLocality = null,
         $postalCode = null
-    )
-    {
+    ) {
         $address = $this
             ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
             ->disableOriginalConstructor()

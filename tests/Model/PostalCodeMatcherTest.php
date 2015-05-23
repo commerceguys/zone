@@ -40,6 +40,7 @@ class PostalCodeMatcherTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::matchPostalCode
      * @covers ::buildPostalCodeList
+     *
      * @uses \CommerceGuys\Zone\Model\PostalCodeMatcherTrait::setIncludedPostalCodes()
      * @uses \CommerceGuys\Zone\Model\PostalCodeMatcherTrait::setExcludedPostalCodes()
      */

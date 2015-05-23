@@ -21,6 +21,7 @@ class ZoneMemberZoneTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::getName
+     *
      * @uses \CommerceGuys\Zone\Model\ZoneMemberZone::setZone
      */
     public function testName()
@@ -55,6 +56,7 @@ class ZoneMemberZoneTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers ::match
+     *
      * @uses \CommerceGuys\Zone\Model\ZoneMemberZone::setZone
      */
     public function testMatch()
