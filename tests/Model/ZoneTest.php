@@ -15,6 +15,9 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
      */
     protected $zone;
 
+    /**
+     * {@inheritdoc}
+     */
     public function setUp()
     {
         $this->zone = new Zone();

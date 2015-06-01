@@ -12,6 +12,9 @@ class ZoneMemberTest extends \PHPUnit_Framework_TestCase
      */
     protected $zoneMember;
 
+    /**
+     * {@inheritdoc}
+     */
     public function setUp()
     {
         $this->zoneMember = $this->getMockForAbstractClass('\CommerceGuys\Zone\Model\ZoneMember');
