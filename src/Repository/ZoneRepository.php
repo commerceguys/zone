@@ -2,8 +2,8 @@
 
 namespace CommerceGuys\Zone\Repository;
 
-use CommerceGuys\Addressing\Provider\DataProvider;
-use CommerceGuys\Addressing\Provider\DataProviderInterface;
+use CommerceGuys\Addressing\Repository\SubdivisionRepository;
+use CommerceGuys\Addressing\Repository\SubdivisionRepositoryInterface;
 use CommerceGuys\Zone\Exception\UnknownZoneException;
 use CommerceGuys\Zone\Model\Zone;
 use CommerceGuys\Zone\Model\ZoneMemberCountry;
@@ -22,13 +22,11 @@ class ZoneRepository implements ZoneRepositoryInterface
     protected $definitionPath;
 
     /**
-     * The address data provider.
+     * The subdivision repository.
      *
-     * Used for loading subdivisions.
-     *
-     * @var DataProviderInterface
+     * @var SubdivisionRepositoryInterface
      */
-    protected $addressDataProvider;
+    protected $subdivisionRepository;
 
     /**
      * Zone index.
@@ -47,13 +45,13 @@ class ZoneRepository implements ZoneRepositoryInterface
     /**
      * Creates a ZoneRepository instance.
      *
-     * @param string                $definitionPath      Path to the zone definitions.
-     * @param DataProviderInterface $addressDataProvider The address data provider.
+     * @param string                         $definitionPath        Path to the zone definitions.
+     * @param SubdivisionRepositoryInterface $subdivisionRepository The subdivision repository.
      */
-    public function __construct($definitionPath, DataProviderInterface $addressDataProvider = null)
+    public function __construct($definitionPath, SubdivisionRepositoryInterface $subdivisionRepository = null)
     {
         $this->definitionPath = $definitionPath;
-        $this->addressDataProvider = $addressDataProvider ?: new DataProvider();
+        $this->subdivisionRepository = $subdivisionRepository ?: new SubdivisionRepository();
     }
 
     /**
@@ -168,13 +166,13 @@ class ZoneRepository implements ZoneRepositoryInterface
     {
         // Load any referenced subdivisions.
         if (isset($definition['administrative_area'])) {
-            $definition['administrative_area'] = $this->addressDataProvider->getSubdivision($definition['administrative_area']);
+            $definition['administrative_area'] = $this->subdivisionRepository->get($definition['administrative_area']);
         }
         if (isset($definition['locality'])) {
-            $definition['locality'] = $this->addressDataProvider->getSubdivision($definition['locality']);
+            $definition['locality'] = $this->subdivisionRepository->get($definition['locality']);
         }
         if (isset($definition['dependent_locality'])) {
-            $definition['dependent_locality'] = $this->addressDataProvider->getSubdivision($definition['dependent_locality']);
+            $definition['dependent_locality'] = $this->subdivisionRepository->get($definition['dependent_locality']);
         }
 
         $zoneMember = new ZoneMemberCountry();
