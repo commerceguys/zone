@@ -24,6 +24,10 @@ Examples of zones:
 Each [zone](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneInterface.php) has [zone members](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneMemberInterface.php).
 A zone matches the provided address if one of its zone members matches the provided address.
 
+The base interfaces don't impose setters, since they aren't needed by the service classes.
+Extended interfaces ([ZoneEntityInterface](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneEntityInterface.php), [ZoneMemberEntityInterface](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneMemberEntityInterface.php)) are provided for that purpose,
+as well as matching [Zone](https://github.com/commerceguys/zone/blob/master/src/Model/Zone.php) and [ZoneMember](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneMember.php) classes that can be used as examples or mapped by Doctrine.
+
 The library contains two types of zone members:
 - [country](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneMemberCountry.php) (matches a country, its subdivisions, included/excluded postal codes)
 - [zone](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneMemberZone.php) (matches a zone)

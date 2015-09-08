@@ -7,7 +7,12 @@ use CommerceGuys\Zone\Exception\UnexpectedTypeException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-class Zone implements ZoneInterface
+/**
+ * Default zone implementation.
+ *
+ * Can be mapped and used by Doctrine.
+ */
+class Zone implements ZoneEntityInterface
 {
     /**
      * Zone id.
@@ -40,7 +45,7 @@ class Zone implements ZoneInterface
     /**
      * Zone members.
      *
-     * @var ZoneMemberInterface[]
+     * @var ZoneMemberEntityInterface[]
      */
     protected $members;
 
@@ -168,7 +173,7 @@ class Zone implements ZoneInterface
     /**
      * {@inheritdoc}
      */
-    public function addMember(ZoneMemberInterface $member)
+    public function addMember(ZoneMemberEntityInterface $member)
     {
         if (!$this->hasMember($member)) {
             $member->setParentZone($this);
@@ -181,7 +186,7 @@ class Zone implements ZoneInterface
     /**
      * {@inheritdoc}
      */
-    public function removeMember(ZoneMemberInterface $member)
+    public function removeMember(ZoneMemberEntityInterface $member)
     {
         if ($this->hasMember($member)) {
             $member->setParentZone(null);
@@ -194,7 +199,7 @@ class Zone implements ZoneInterface
     /**
      * {@inheritdoc}
      */
-    public function hasMember(ZoneMemberInterface $member)
+    public function hasMember(ZoneMemberEntityInterface $member)
     {
         return $this->members->contains($member);
     }

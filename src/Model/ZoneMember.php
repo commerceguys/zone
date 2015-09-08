@@ -2,7 +2,12 @@
 
 namespace CommerceGuys\Zone\Model;
 
-abstract class ZoneMember implements ZoneMemberInterface
+/**
+ * Default zone member implementation.
+ *
+ * Can be mapped and used by Doctrine.
+ */
+abstract class ZoneMember implements ZoneMemberEntityInterface
 {
     /**
      * Zone member id.
@@ -21,7 +26,7 @@ abstract class ZoneMember implements ZoneMemberInterface
     /**
      * The parent zone.
      *
-     * @var ZoneInterface
+     * @var ZoneEntityInterface
      */
     protected $parentZone;
 
@@ -72,7 +77,7 @@ abstract class ZoneMember implements ZoneMemberInterface
     /**
      * {@inheritdoc}
      */
-    public function setParentZone(ZoneInterface $parentZone = null)
+    public function setParentZone(ZoneEntityInterface $parentZone = null)
     {
         $this->parentZone = $parentZone;
 

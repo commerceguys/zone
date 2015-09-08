@@ -14,13 +14,6 @@ interface ZoneMemberInterface
     public function getId();
 
     /**
-     * Sets the zone member id.
-     *
-     * @param string $id The zone member id.
-     */
-    public function setId($id);
-
-    /**
      * Gets the zone member name.
      *
      * @return string The zone member name.
@@ -28,25 +21,11 @@ interface ZoneMemberInterface
     public function getName();
 
     /**
-     * Sets the zone member name.
-     *
-     * @param string $name The zone member name.
-     */
-    public function setName($name);
-
-    /**
      * Gets the parent zone.
      *
      * @return ZoneInterface|null The parent zone, if set.
      */
     public function getParentZone();
-
-    /**
-     * Sets the parent zone.
-     *
-     * @param ZoneInterface|null $parentZone The parent zone.
-     */
-    public function setParentZone(ZoneInterface $parentZone = null);
 
     /**
      * Checks whether the provided address belongs to the zone member.
