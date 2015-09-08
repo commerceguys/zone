@@ -89,30 +89,10 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
      */
     public function testMatch($address, $expectedResult)
     {
-        $mockBuilder = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
-            ->disableOriginalConstructor();
-
-        $administrativeArea = $mockBuilder->getMock();
-        $administrativeArea
-            ->expects($this->any())
-            ->method('getId')
-            ->will($this->returnValue('CN-13'));
-        $locality = $mockBuilder->getMock();
-        $locality
-            ->expects($this->any())
-            ->method('getId')
-            ->will($this->returnValue('CN-13-e8dfb8'));
-        $dependentLocality = $mockBuilder->getMock();
-        $dependentLocality
-            ->expects($this->any())
-            ->method('getId')
-            ->will($this->returnValue('CN-13-e8dfb8-269b0a'));
-
         $this->zoneMember->setCountryCode('CN');
-        $this->zoneMember->setAdministrativeArea($administrativeArea);
-        $this->zoneMember->setLocality($locality);
-        $this->zoneMember->setDependentLocality($dependentLocality);
+        $this->zoneMember->setAdministrativeArea('CN-13');
+        $this->zoneMember->setLocality('CN-13-e8dfb8');
+        $this->zoneMember->setDependentLocality('CN-13-e8dfb8-269b0a');
         $this->zoneMember->setIncludedPostalCodes('123456');
 
         $this->assertEquals($expectedResult, $this->zoneMember->match($address));

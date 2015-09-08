@@ -22,21 +22,21 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * The administrative area.
      *
-     * @var SubdivisionInterface
+     * @var string
      */
     protected $administrativeArea;
 
     /**
      * The locality.
      *
-     * @var SubdivisionInterface
+     * @var string
      */
     protected $locality;
 
     /**
      * The dependent locality.
      *
-     * @var SubdivisionInterface
+     * @var string
      */
     protected $dependentLocality;
 
@@ -65,8 +65,7 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Gets the administrative area.
      *
-     * @return SubdivisionInterface|null The administrative area, or null
-     *                                   if all should match.
+     * @return string|null The administrative area, or null if all should match.
      */
     public function getAdministrativeArea()
     {
@@ -76,9 +75,9 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Sets the administrative area.
      *
-     * @param SubdivisionInterface|null $administrativeArea The administrative area.
+     * @param string|null $administrativeArea The administrative area.
      */
-    public function setAdministrativeArea(SubdivisionInterface $administrativeArea = null)
+    public function setAdministrativeArea($administrativeArea = null)
     {
         $this->administrativeArea = $administrativeArea;
 
@@ -88,7 +87,7 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Gets the locality.
      *
-     * @return SubdivisionInterface|null The locality, or null if all should match.
+     * @return string|null The locality, or null if all should match.
      */
     public function getLocality()
     {
@@ -98,9 +97,9 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Sets the locality.
      *
-     * @param SubdivisionInterface|null $locality The locality.
+     * @param string|null $locality The locality.
      */
-    public function setLocality(SubdivisionInterface $locality = null)
+    public function setLocality($locality = null)
     {
         $this->locality = $locality;
 
@@ -110,8 +109,7 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Gets the dependent locality.
      *
-     * @return SubdivisionInterface|null The dependent locality, or null
-     *                                   if all should match.
+     * @return string|null The dependent locality, or null if all should match.
      */
     public function getDependentLocality()
     {
@@ -121,9 +119,9 @@ class ZoneMemberCountry extends ZoneMember
     /**
      * Sets the dependent locality.
      *
-     * @param SubdivisionInterface|null $dependentLocality The dependent locality.
+     * @param string|null $dependentLocality The dependent locality.
      */
-    public function setDependentLocality(SubdivisionInterface $dependentLocality = null)
+    public function setDependentLocality($dependentLocality = null)
     {
         $this->dependentLocality = $dependentLocality;
 
@@ -138,13 +136,13 @@ class ZoneMemberCountry extends ZoneMember
         if ($address->getCountryCode() != $this->countryCode) {
             return false;
         }
-        if ($this->administrativeArea && $this->administrativeArea->getId() != $address->getAdministrativeArea()) {
+        if ($this->administrativeArea && $this->administrativeArea != $address->getAdministrativeArea()) {
             return false;
         }
-        if ($this->locality && $this->locality->getId() != $address->getLocality()) {
+        if ($this->locality && $this->locality != $address->getLocality()) {
             return false;
         }
-        if ($this->dependentLocality && $this->dependentLocality->getId() != $address->getDependentLocality()) {
+        if ($this->dependentLocality && $this->dependentLocality != $address->getDependentLocality()) {
             return false;
         }
         if (!$this->matchPostalCode($address->getPostalCode())) {
