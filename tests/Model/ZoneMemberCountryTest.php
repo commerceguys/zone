@@ -78,13 +78,35 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::getIncludedPostalCodes
+     * @covers ::setIncludedPostalCodes
+     */
+    public function testIncludedPostalCodes()
+    {
+        $this->zoneMember->setIncludedPostalCodes('123, 456, 789');
+        $this->assertEquals('123, 456, 789', $this->zoneMember->getIncludedPostalCodes());
+    }
+
+    /**
+     * @covers ::getExcludedPostalCodes
+     * @covers ::setExcludedPostalCodes
+     */
+    public function testExcludedPostalCodes()
+    {
+        $this->zoneMember->setExcludedPostalCodes('123, 456, 789');
+        $this->assertEquals('123, 456, 789', $this->zoneMember->getExcludedPostalCodes());
+    }
+
+    /**
      * @covers ::match
      *
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setCountryCode
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setAdministrativeArea
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setLocality
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setDependentLocality
-     * @uses \CommerceGuys\Zone\Model\PostalCodeMatcherTrait
+     * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setIncludedPostalCodes
+     * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setExcludedPostalCodes
+     * @uses \CommerceGuys\Zone\PostalCodeHelper
      * @dataProvider addressProvider
      */
     public function testMatch($address, $expectedResult)

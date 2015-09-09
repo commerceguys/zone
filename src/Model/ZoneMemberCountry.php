@@ -4,14 +4,13 @@ namespace CommerceGuys\Zone\Model;
 
 use CommerceGuys\Addressing\Model\AddressInterface;
 use CommerceGuys\Addressing\Model\SubdivisionInterface;
+use CommerceGuys\Zone\PostalCodeHelper;
 
 /**
  * Matches a country, its subdivisions and postal codes.
  */
 class ZoneMemberCountry extends ZoneMember
 {
-    use PostalCodeMatcherTrait;
-
     /**
      * The country code.
      *
@@ -39,6 +38,26 @@ class ZoneMemberCountry extends ZoneMember
      * @var string
      */
     protected $dependentLocality;
+
+    /**
+     * The included postal codes.
+     *
+     * Can be a regular expression ("/(35|38)[0-9]{3}/") or a comma-separated
+     * list of postal codes, including ranges ("98, 100:200, 250").
+     *
+     * @var string
+     */
+    protected $includedPostalCodes;
+
+    /**
+     * The excluded postal codes.
+     *
+     * Can be a regular expression ("/(35|38)[0-9]{3}/") or a comma-separated
+     * list of postal codes, including ranges ("98, 100:200, 250").
+     *
+     * @var string
+     */
+    protected $excludedPostalCodes;
 
     /**
      * Gets the country code.
@@ -129,6 +148,50 @@ class ZoneMemberCountry extends ZoneMember
     }
 
     /**
+     * Gets the included postal codes.
+     *
+     * @return string The included postal codes.
+     */
+    public function getIncludedPostalCodes()
+    {
+        return $this->includedPostalCodes;
+    }
+
+    /**
+     * Sets the included postal codes.
+     *
+     * @param string $includedPostalCodes The included postal codes.
+     */
+    public function setIncludedPostalCodes($includedPostalCodes)
+    {
+        $this->includedPostalCodes = $includedPostalCodes;
+
+        return $this;
+    }
+
+    /**
+     * Gets the excluded postal codes.
+     *
+     * @return string The excluded postal codes.
+     */
+    public function getExcludedPostalCodes()
+    {
+        return $this->excludedPostalCodes;
+    }
+
+    /**
+     * Sets the excluded postal codes.
+     *
+     * @param string $excludedPostalCodes The excluded postal codes.
+     */
+    public function setExcludedPostalCodes($excludedPostalCodes)
+    {
+        $this->excludedPostalCodes = $excludedPostalCodes;
+
+        return $this;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function match(AddressInterface $address)
@@ -145,7 +208,7 @@ class ZoneMemberCountry extends ZoneMember
         if ($this->dependentLocality && $this->dependentLocality != $address->getDependentLocality()) {
             return false;
         }
-        if (!$this->matchPostalCode($address->getPostalCode())) {
+        if (!PostalCodeHelper::match($address->getPostalCode(), $this->includedPostalCodes, $this->excludedPostalCodes)) {
             return false;
         }
 
