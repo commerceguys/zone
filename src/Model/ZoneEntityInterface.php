@@ -2,6 +2,8 @@
 
 namespace CommerceGuys\Zone\Model;
 
+use Doctrine\Common\Collections\Collection;
+
 interface ZoneEntityInterface extends ZoneInterface
 {
     /**
@@ -37,7 +39,7 @@ interface ZoneEntityInterface extends ZoneInterface
      *
      * @param ZoneMemberEntityInterface[] $members The zone members.
      */
-    public function setMembers($members);
+    public function setMembers(Collection $members);
 
     /**
      * Adds a zone member.

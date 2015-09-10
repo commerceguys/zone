@@ -74,17 +74,6 @@ class ZoneTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::setMembers
-     *
-     * @uses \CommerceGuys\Zone\Model\Zone::__construct
-     * @expectedException \CommerceGuys\Zone\Exception\UnexpectedTypeException
-     */
-    public function testSetInvalidMembers()
-    {
-        $this->zone->setMembers([1, 2]);
-    }
-
-    /**
      * @covers ::__construct
      * @covers ::getMembers
      * @covers ::setMembers

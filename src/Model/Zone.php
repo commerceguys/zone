@@ -3,7 +3,6 @@
 namespace CommerceGuys\Zone\Model;
 
 use CommerceGuys\Addressing\Model\AddressInterface;
-use CommerceGuys\Zone\Exception\UnexpectedTypeException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -150,13 +149,8 @@ class Zone implements ZoneEntityInterface
     /**
      * {@inheritdoc}
      */
-    public function setMembers($members)
+    public function setMembers(Collection $members)
     {
-        // The interface doesn't typehint $children to allow other
-        // implementations to avoid using Doctrine Collections if desired.
-        if (!($members instanceof Collection)) {
-            throw new UnexpectedTypeException($members, 'Collection');
-        }
         $this->members = $members;
 
         return $this;
