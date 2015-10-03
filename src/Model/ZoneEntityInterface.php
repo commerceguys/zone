@@ -10,6 +10,8 @@ interface ZoneEntityInterface extends ZoneInterface
      * Sets the zone id.
      *
      * @param string $id The zone id.
+     *
+     * @return self
      */
     public function setId($id);
 
@@ -17,6 +19,8 @@ interface ZoneEntityInterface extends ZoneInterface
      * Sets the zone name.
      *
      * @param string $name The zone name.
+     *
+     * @return self
      */
     public function setName($name);
 
@@ -24,6 +28,8 @@ interface ZoneEntityInterface extends ZoneInterface
      * Sets the zone scope.
      *
      * @param string $scope The zone scope.
+     *
+     * @return self
      */
     public function setScope($scope);
 
@@ -31,6 +37,8 @@ interface ZoneEntityInterface extends ZoneInterface
      * Sets the zone priority.
      *
      * @param int $priority The zone priority.
+     *
+     * @return self
      */
     public function setPriority($priority);
 
@@ -38,6 +46,8 @@ interface ZoneEntityInterface extends ZoneInterface
      * Sets the zone members.
      *
      * @param ZoneMemberEntityInterface[] $members The zone members.
+     *
+     * @return self
      */
     public function setMembers(Collection $members);
 
@@ -45,6 +55,8 @@ interface ZoneEntityInterface extends ZoneInterface
      * Adds a zone member.
      *
      * @param ZoneMemberEntityInterface $member The zone member.
+     *
+     * @return self
      */
     public function addMember(ZoneMemberEntityInterface $member);
 
@@ -52,6 +64,8 @@ interface ZoneEntityInterface extends ZoneInterface
      * Removes a zone member.
      *
      * @param ZoneMemberEntityInterface $member The zone member.
+     *
+     * @return self
      */
     public function removeMember(ZoneMemberEntityInterface $member);
 

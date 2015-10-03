@@ -10,6 +10,8 @@ interface ZoneMemberEntityInterface extends ZoneMemberInterface
      * Sets the zone member id.
      *
      * @param string $id The zone member id.
+     *
+     * @return self
      */
     public function setId($id);
 
@@ -17,6 +19,8 @@ interface ZoneMemberEntityInterface extends ZoneMemberInterface
      * Sets the zone member name.
      *
      * @param string $name The zone member name.
+     *
+     * @return self
      */
     public function setName($name);
 
@@ -24,6 +28,8 @@ interface ZoneMemberEntityInterface extends ZoneMemberInterface
      * Sets the parent zone.
      *
      * @param ZoneEntityInterface|null $parentZone The parent zone.
+     *
+     * @return self
      */
     public function setParentZone(ZoneEntityInterface $parentZone = null);
 }

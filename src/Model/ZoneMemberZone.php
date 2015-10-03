@@ -38,6 +38,8 @@ class ZoneMemberZone extends ZoneMember
      * Sets the zone.
      *
      * @param ZoneEntityInterface $zone The zone matched by the zone member.
+     *
+     * @return self
      */
     public function setZone(ZoneEntityInterface $zone)
     {

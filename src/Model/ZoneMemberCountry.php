@@ -73,6 +73,8 @@ class ZoneMemberCountry extends ZoneMember
      * Sets the country code.
      *
      * @param string $countryCode The country code.
+     *
+     * @return self
      */
     public function setCountryCode($countryCode)
     {
@@ -95,6 +97,8 @@ class ZoneMemberCountry extends ZoneMember
      * Sets the administrative area.
      *
      * @param string|null $administrativeArea The administrative area.
+     *
+     * @return self
      */
     public function setAdministrativeArea($administrativeArea = null)
     {
@@ -117,6 +121,8 @@ class ZoneMemberCountry extends ZoneMember
      * Sets the locality.
      *
      * @param string|null $locality The locality.
+     *
+     * @return self
      */
     public function setLocality($locality = null)
     {
@@ -139,6 +145,8 @@ class ZoneMemberCountry extends ZoneMember
      * Sets the dependent locality.
      *
      * @param string|null $dependentLocality The dependent locality.
+     *
+     * @return self
      */
     public function setDependentLocality($dependentLocality = null)
     {
@@ -161,6 +169,8 @@ class ZoneMemberCountry extends ZoneMember
      * Sets the included postal codes.
      *
      * @param string $includedPostalCodes The included postal codes.
+     *
+     * @return self
      */
     public function setIncludedPostalCodes($includedPostalCodes)
     {
@@ -183,6 +193,8 @@ class ZoneMemberCountry extends ZoneMember
      * Sets the excluded postal codes.
      *
      * @param string $excludedPostalCodes The excluded postal codes.
+     *
+     * @return self
      */
     public function setExcludedPostalCodes($excludedPostalCodes)
     {
