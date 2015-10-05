@@ -120,12 +120,9 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('AT', $austriaMember->getCountryCode());
         $this->assertEquals('6691, 6991:6993', $austriaMember->getIncludedPostalCodes());
         $this->assertEquals('123456', $austriaMember->getExcludedPostalCodes());
-        // Test the dummy subdivision values.
-        $subdivisionRepository = new SubdivisionRepository();
-        $subdivision = $subdivisionRepository->get('CH-AG');
-        $this->assertEquals($subdivision, $austriaMember->getAdministrativeArea());
-        $this->assertEquals($subdivision, $austriaMember->getLocality());
-        $this->assertEquals($subdivision, $austriaMember->getDependentLocality());
+        $this->assertEquals('CH-AG', $austriaMember->getAdministrativeArea());
+        $this->assertEquals('CH-AG', $austriaMember->getLocality());
+        $this->assertEquals('CH-AG', $austriaMember->getDependentLocality());
 
         // Test the static cache.
         $sameZone = $zoneRepository->get('de_vat');

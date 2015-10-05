@@ -22,13 +22,6 @@ class ZoneRepository implements ZoneRepositoryInterface
     protected $definitionPath;
 
     /**
-     * The subdivision repository.
-     *
-     * @var SubdivisionRepositoryInterface
-     */
-    protected $subdivisionRepository;
-
-    /**
      * Zone index.
      *
      * @var array
@@ -45,13 +38,11 @@ class ZoneRepository implements ZoneRepositoryInterface
     /**
      * Creates a ZoneRepository instance.
      *
-     * @param string                         $definitionPath        Path to the zone definitions.
-     * @param SubdivisionRepositoryInterface $subdivisionRepository The subdivision repository.
+     * @param string $definitionPath Path to the zone definitions.
      */
-    public function __construct($definitionPath, SubdivisionRepositoryInterface $subdivisionRepository = null)
+    public function __construct($definitionPath)
     {
         $this->definitionPath = $definitionPath;
-        $this->subdivisionRepository = $subdivisionRepository ?: new SubdivisionRepository();
     }
 
     /**
@@ -164,17 +155,6 @@ class ZoneRepository implements ZoneRepositoryInterface
      */
     protected function createZoneMemberCountryFromDefinition(array $definition)
     {
-        // Load any referenced subdivisions.
-        if (isset($definition['administrative_area'])) {
-            $definition['administrative_area'] = $this->subdivisionRepository->get($definition['administrative_area']);
-        }
-        if (isset($definition['locality'])) {
-            $definition['locality'] = $this->subdivisionRepository->get($definition['locality']);
-        }
-        if (isset($definition['dependent_locality'])) {
-            $definition['dependent_locality'] = $this->subdivisionRepository->get($definition['dependent_locality']);
-        }
-
         $zoneMember = new ZoneMemberCountry();
         $setValues = \Closure::bind(function ($definition) {
             $this->id = $definition['id'];
