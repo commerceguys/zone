@@ -54,8 +54,9 @@ $zone->addMember($austriaZoneMember);
 
 // Check if the provided austrian address matches the German VAT zone.
 $austrianAddress = new Address();
-$austrianAddress->setCountryCode('AT');
-$austrianAddress->setPostalCode('6692');
+$austrianAddress = $austrianAddress
+    ->withCountryCode('AT')
+    ->withPostalCode('6692');
 echo $zone->match($austrianAddress); // true
 ```
 
@@ -75,8 +76,9 @@ $repository = new ZoneRepository('resources/zone');
 $matcher = new ZoneMatcher($repository);
 
 $austrianAddress = new Address();
-$austrianAddress->setCountryCode('AT');
-$austrianAddress->setPostalCode('6692');
+$austrianAddress = $austrianAddress
+    ->withCountryCode('AT')
+    ->withPostalCode('6692');
 
 // Get all matching zones.
 $zones = $matcher->matchAll($austrianAddress);
