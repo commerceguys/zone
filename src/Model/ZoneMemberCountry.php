@@ -3,7 +3,6 @@
 namespace CommerceGuys\Zone\Model;
 
 use CommerceGuys\Addressing\Model\AddressInterface;
-use CommerceGuys\Addressing\Model\SubdivisionInterface;
 use CommerceGuys\Zone\PostalCodeHelper;
 
 /**
