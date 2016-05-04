@@ -11,7 +11,8 @@
     "require-dev": {
         "symfony/intl": ">=2.3",
         "phpunit/phpunit": "~4.0",
-        "mikey179/vfsStream": "1.*"
+        "mikey179/vfsStream": "1.*",
+        "squizlabs/php_codesniffer": "2.*"
     },
     "autoload": {
         "psr-4": {
