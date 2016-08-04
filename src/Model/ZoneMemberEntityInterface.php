@@ -2,8 +2,6 @@
 
 namespace CommerceGuys\Zone\Model;
 
-use CommerceGuys\Addressing\Model\AddressInterface;
-
 interface ZoneMemberEntityInterface extends ZoneMemberInterface
 {
     /**
