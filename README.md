@@ -33,7 +33,7 @@ The library contains two types of zone members:
 - [zone](https://github.com/commerceguys/zone/blob/master/src/Model/ZoneMemberZone.php) (matches a zone)
 
 ```php
-use CommerceGuys\Addressing\Model\Address;
+use CommerceGuys\Addressing\Address;
 use CommerceGuys\Zone\Model\Zone;
 use CommerceGuys\Zone\Model\ZoneMemberCountry;
 
@@ -66,7 +66,7 @@ A matcher class is provided for the use case where an address should be matched
 against all zones in the system, with the matched zones ordered by priority.
 
 ```php
-use CommerceGuys\Addressing\Model\Address;
+use CommerceGuys\Addressing\Address;
 use CommerceGuys\Zone\Matcher\ZoneMatcher;
 use CommerceGuys\Zone\Repository\ZoneRepository;
 

@@ -40,7 +40,7 @@ class ZoneMemberEuTest extends \PHPUnit_Framework_TestCase
     public function testMatch()
     {
         $mockBuilder = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->getMockBuilder('CommerceGuys\Addressing\Address')
             ->disableOriginalConstructor();
 
         $frenchAddress = $mockBuilder->getMock();

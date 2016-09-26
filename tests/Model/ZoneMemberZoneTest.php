@@ -65,7 +65,7 @@ class ZoneMemberZoneTest extends \PHPUnit_Framework_TestCase
     public function testMatch()
     {
         $address = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->getMockBuilder('CommerceGuys\Addressing\Address')
             ->disableOriginalConstructor()
             ->getMock();
         $matchingZone = $this

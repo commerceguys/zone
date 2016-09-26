@@ -39,7 +39,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     public function testAdministrativeArea()
     {
         $administrativeArea = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
+            ->getMockBuilder('CommerceGuys\Addressing\Subdivision\Subdivision')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -54,7 +54,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     public function testLocality()
     {
         $locality = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
+            ->getMockBuilder('CommerceGuys\Addressing\Subdivision\Subdivision')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -69,7 +69,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     public function testDependentLocality()
     {
         $dependentLocality = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Subdivision')
+            ->getMockBuilder('CommerceGuys\Addressing\Subdivision\Subdivision')
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -112,9 +112,9 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     public function testMatch($address, $expectedResult)
     {
         $this->zoneMember->setCountryCode('CN');
-        $this->zoneMember->setAdministrativeArea('CN-13');
-        $this->zoneMember->setLocality('CN-13-e8dfb8');
-        $this->zoneMember->setDependentLocality('CN-13-e8dfb8-269b0a');
+        $this->zoneMember->setAdministrativeArea('Hebei Sheng');
+        $this->zoneMember->setLocality('Handan Shi');
+        $this->zoneMember->setDependentLocality('Ci Xian');
         $this->zoneMember->setIncludedPostalCodes('123456');
 
         $this->assertEquals($expectedResult, $this->zoneMember->match($address));
@@ -127,10 +127,10 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
     {
         $emptyAddress = $this->getAddress();
         $countryAddress = $this->getAddress('CN');
-        $administrativeAreaAddress = $this->getAddress('CN', 'CN-13');
-        $localityAddress = $this->getAddress('CN', 'CN-13', 'CN-13-e8dfb8');
-        $dependentLocalityAddress = $this->getAddress('CN', 'CN-13', 'CN-13-e8dfb8', 'CN-13-e8dfb8-269b0a');
-        $fullAddress = $this->getAddress('CN', 'CN-13', 'CN-13-e8dfb8', 'CN-13-e8dfb8-269b0a', '123456');
+        $administrativeAreaAddress = $this->getAddress('CN', 'Hebei Sheng');
+        $localityAddress = $this->getAddress('CN', 'Hebei Sheng', 'Handan Shi');
+        $dependentLocalityAddress = $this->getAddress('CN', 'Hebei Sheng', 'Handan Shi', 'Ci Xian');
+        $fullAddress = $this->getAddress('CN', 'Hebei Sheng', 'Handan Shi', 'Ci Xian', '123456');
 
         return [
             [$emptyAddress, false],
@@ -151,7 +151,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
      * @param string $dependentLocality  The dependent locality id.
      * @param string $postalCode         The postal code.
      *
-     * @return \CommerceGuys\Addressing\Model\Address
+     * @return \CommerceGuys\Addressing\Address
      */
     protected function getAddress(
         $countryCode = null,
@@ -161,7 +161,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
         $postalCode = null
     ) {
         $address = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->getMockBuilder('CommerceGuys\Addressing\Address')
             ->disableOriginalConstructor()
             ->getMock();
         if ($countryCode) {

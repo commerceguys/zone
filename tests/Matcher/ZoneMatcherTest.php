@@ -93,7 +93,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
     public function testMatch()
     {
         $address = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->getMockBuilder('CommerceGuys\Addressing\Address')
             ->disableOriginalConstructor()
             ->getMock();
         $zone = $this->matcher->match($address);
@@ -109,7 +109,7 @@ class ZoneMatcherTest extends \PHPUnit_Framework_TestCase
     public function testMatchAll()
     {
         $address = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->getMockBuilder('CommerceGuys\Addressing\Address')
             ->disableOriginalConstructor()
             ->getMock();
         $zones = $this->matcher->matchAll($address);

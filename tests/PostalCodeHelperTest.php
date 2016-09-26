@@ -37,12 +37,12 @@ class PostalCodeHelperTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $postalCode The postal code.
      *
-     * @return \CommerceGuys\Addressing\Model\Address
+     * @return \CommerceGuys\Addressing\Address
      */
     protected function getAddress($postalCode = null)
     {
         $address = $this
-            ->getMockBuilder('CommerceGuys\Addressing\Model\Address')
+            ->getMockBuilder('CommerceGuys\Addressing\Address')
             ->getMock();
         if ($postalCode) {
             $address

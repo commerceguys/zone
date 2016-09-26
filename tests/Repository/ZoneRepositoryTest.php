@@ -2,7 +2,7 @@
 
 namespace CommerceGuys\Addressing\Tests\Repository;
 
-use CommerceGuys\Addressing\Repository\SubdivisionRepository;
+use CommerceGuys\Addressing\Subdivision\SubdivisionRepository;
 use CommerceGuys\Zone\Model\Zone;
 use CommerceGuys\Zone\Repository\ZoneRepository;
 use org\bovigo\vfs\vfsStream;
@@ -50,9 +50,9 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
                     'country_code' => 'AT',
                     'included_postal_codes' => '6691, 6991:6993',
                     // Dummy data to ensure all fields get tested.
-                    'administrative_area' => 'CH-AG',
-                    'locality' => 'CH-AG',
-                    'dependent_locality' => 'CH-AG',
+                    'administrative_area' => 'dummy',
+                    'locality' => 'dummy',
+                    'dependent_locality' => 'dummy',
                     'excluded_postal_codes' => '123456',
                 ],
             ],
@@ -120,9 +120,9 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('AT', $austriaMember->getCountryCode());
         $this->assertEquals('6691, 6991:6993', $austriaMember->getIncludedPostalCodes());
         $this->assertEquals('123456', $austriaMember->getExcludedPostalCodes());
-        $this->assertEquals('CH-AG', $austriaMember->getAdministrativeArea());
-        $this->assertEquals('CH-AG', $austriaMember->getLocality());
-        $this->assertEquals('CH-AG', $austriaMember->getDependentLocality());
+        $this->assertEquals('dummy', $austriaMember->getAdministrativeArea());
+        $this->assertEquals('dummy', $austriaMember->getLocality());
+        $this->assertEquals('dummy', $austriaMember->getDependentLocality());
 
         // Test the static cache.
         $sameZone = $zoneRepository->get('de_vat');

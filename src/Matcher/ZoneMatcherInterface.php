@@ -2,7 +2,7 @@
 
 namespace CommerceGuys\Zone\Matcher;
 
-use CommerceGuys\Addressing\Model\AddressInterface;
+use CommerceGuys\Addressing\AddressInterface;
 use CommerceGuys\Zone\Model\ZoneInterface;
 
 interface ZoneMatcherInterface

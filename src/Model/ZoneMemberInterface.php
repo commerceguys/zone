@@ -2,7 +2,7 @@
 
 namespace CommerceGuys\Zone\Model;
 
-use CommerceGuys\Addressing\Model\AddressInterface;
+use CommerceGuys\Addressing\AddressInterface;
 
 interface ZoneMemberInterface
 {
