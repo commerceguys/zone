@@ -3,7 +3,7 @@ zone
 
 [![Build Status](https://travis-ci.org/commerceguys/zone.svg?branch=master)](https://travis-ci.org/commerceguys/zone)
 
-A PHP 5.4+ zone management library. Requires [commerceguys/addressing](https://github.com/commerceguys/addressing).
+A PHP 5.5+ zone management library. Requires [commerceguys/addressing](https://github.com/commerceguys/addressing).
 
 Zones are territorial groupings mostly used for shipping or tax purposes.
 For example, a set of shipping rates associated with a zone where the rates
