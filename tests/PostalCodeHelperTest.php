@@ -30,7 +30,16 @@ class PostalCodeHelperTest extends \PHPUnit_Framework_TestCase
         $excludeRule = '35';
         $this->assertEquals(true, PostalCodeHelper::match('34', $includeRule, $excludeRule));
         $this->assertEquals(false, PostalCodeHelper::match('35', $includeRule, $excludeRule));
+
+        // Test multiple lists
+        $includeRule = '2:10, 30:40';
+        $excludeRule = '5:7, 34:36';
+        $this->assertEquals(true, PostalCodeHelper::match('2', $includeRule, $excludeRule));
+        $this->assertEquals(false, PostalCodeHelper::match('5', $includeRule, $excludeRule));
+        $this->assertEquals(true, PostalCodeHelper::match('30', $includeRule, $excludeRule));
+        $this->assertEquals(false, PostalCodeHelper::match('34', $includeRule, $excludeRule));
     }
+    
 
     /**
      * Returns a mock address with the provided postal code.
