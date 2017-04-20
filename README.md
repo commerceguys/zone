@@ -1,6 +1,8 @@
 zone
 =====
 
+*Important:* A newer version of the zone functionality is now included directly in the [commerceguys/addressing](https://github.com/commerceguys/addressing) library. This library is deprecated.
+
 [![Build Status](https://travis-ci.org/commerceguys/zone.svg?branch=master)](https://travis-ci.org/commerceguys/zone)
 
 A PHP 5.5+ zone management library. Requires [commerceguys/addressing](https://github.com/commerceguys/addressing).
