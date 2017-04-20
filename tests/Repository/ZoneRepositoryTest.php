@@ -92,7 +92,7 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
      * @uses \CommerceGuys\Zone\Model\ZoneMember
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry
      * @uses \CommerceGuys\Zone\Model\ZoneMemberZone
-     * @uses \CommerceGuys\Zone\PostalCodeHelper
+     * @uses \CommerceGuys\Addressing\PostalCodeHelper
      * @depends testConstructor
      */
     public function testGet($zoneRepository)
@@ -153,7 +153,7 @@ class ZoneRepositoryTest extends \PHPUnit_Framework_TestCase
      * @uses \CommerceGuys\Zone\Model\ZoneMember
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry
      * @uses \CommerceGuys\Zone\Model\ZoneMemberZone
-     * @uses \CommerceGuys\Zone\PostalCodeHelper
+     * @uses \CommerceGuys\Addressing\PostalCodeHelper
      * @depends testConstructor
      */
     public function testGetAll($zoneRepository)

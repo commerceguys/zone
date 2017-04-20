@@ -106,7 +106,7 @@ class ZoneMemberCountryTest extends \PHPUnit_Framework_TestCase
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setDependentLocality
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setIncludedPostalCodes
      * @uses \CommerceGuys\Zone\Model\ZoneMemberCountry::setExcludedPostalCodes
-     * @uses \CommerceGuys\Zone\PostalCodeHelper
+     * @uses \CommerceGuys\Addressing\PostalCodeHelper
      * @dataProvider addressProvider
      */
     public function testMatch($address, $expectedResult)

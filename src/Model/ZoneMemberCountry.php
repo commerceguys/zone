@@ -3,7 +3,7 @@
 namespace CommerceGuys\Zone\Model;
 
 use CommerceGuys\Addressing\AddressInterface;
-use CommerceGuys\Zone\PostalCodeHelper;
+use CommerceGuys\Addressing\PostalCodeHelper;
 
 /**
  * Matches a country, its subdivisions and postal codes.
