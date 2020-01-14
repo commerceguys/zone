@@ -2,6 +2,8 @@
 
 namespace CommerceGuys\Zone\Repository;
 
+use CommerceGuys\Zone\Model\ZoneInterface;
+
 /**
  * Zone repository interface.
  */
